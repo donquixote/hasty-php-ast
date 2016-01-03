@@ -27,6 +27,6 @@ interface AstDeclarationInterface {
    * @return string
    *   Name of the class, without namespace.
    */
-  function getName();
+  function getShortName();
 
 }

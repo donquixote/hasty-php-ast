@@ -8,56 +8,54 @@ use Donquixote\HastyPhpAst\Ast\Declaration\AstDeclarationBase;
 class AstClassLike extends AstDeclarationBase implements AstClassLikeInterface {
 
   /**
-   * @var string|null
-   */
-  private $parentClassName;
-
-  /**
-   * @var string[]
-   */
-  private $interfaceNames;
-
-  /**
    * @var \Donquixote\HastyPhpAst\Ast\ClassLikeBody\AstClassLikeBodyInterface
    */
   private $body;
 
   /**
+   * @var string[]
+   */
+  private $extendsAliases;
+
+  /**
+   * @var string[]
+   */
+  private $implementsAliases;
+
+  /**
    * @param string $docComment
    * @param true[] $modifiers
-   * @param string $name
-   * @param string|null $parentClassName
-   * @param string[] $interfaceNames
+   * @param string $shortName
+   * @param string[] $extendsAliases
+   * @param string[] $implementsAliases
    * @param \Donquixote\HastyPhpAst\Ast\ClassLikeBody\AstClassLikeBodyInterface $body
    */
   function __construct(
     $docComment,
     array $modifiers,
-    $name,
-    $parentClassName,
-    array $interfaceNames,
+    $shortName,
+    array $extendsAliases,
+    array $implementsAliases,
     AstClassLikeBodyInterface $body
   ) {
-    parent::__construct($docComment, $modifiers, $name);
-    $this->parentClassName = $parentClassName;
-    $this->interfaceNames = $interfaceNames;
+    parent::__construct($docComment, $modifiers, $shortName);
+    $this->extendsAliases = $extendsAliases;
+    $this->implementsAliases = $implementsAliases;
     $this->body = $body;
   }
 
   /**
-   * @return string|null
-   *   Alias name of the parent class.
+   * @return string[]
    */
-  function getParentClassName() {
-    return $this->parentClassName;
+  function getExtendsAliases() {
+    return $this->extendsAliases;
   }
 
   /**
    * @return string[]
-   *   Alias names of implemented or extended interfaces.
    */
-  function getInterfaceNames() {
-    return $this->interfaceNames;
+  function getImplementsAliases() {
+    return $this->implementsAliases;
   }
 
   /**

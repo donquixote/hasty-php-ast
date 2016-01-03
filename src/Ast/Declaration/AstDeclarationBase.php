@@ -17,17 +17,17 @@ class AstDeclarationBase implements AstDeclarationInterface {
   /**
    * @var string
    */
-  private $name;
+  private $shortName;
 
   /**
    * @param string $docComment
    * @param true[] $modifiers
-   * @param string $name
+   * @param string $shortName
    */
-  function __construct($docComment, array $modifiers, $name) {
+  function __construct($docComment, array $modifiers, $shortName) {
     $this->docblock = $docComment;
     $this->modifiers = $modifiers;
-    $this->name = $name;
+    $this->shortName = $shortName;
   }
 
   /**
@@ -59,8 +59,8 @@ class AstDeclarationBase implements AstDeclarationInterface {
    * @return string
    *   Name of the class, without namespace.
    */
-  function getName() {
-    return $this->name;
+  function getShortName() {
+    return $this->shortName;
   }
 
 }

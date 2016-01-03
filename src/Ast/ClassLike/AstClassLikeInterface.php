@@ -7,16 +7,14 @@ use Donquixote\HastyPhpAst\Ast\Declaration\AstDeclarationInterface;
 interface AstClassLikeInterface extends AstDeclarationInterface {
 
   /**
-   * @return string|null
-   *   Alias name of the parent class.
+   * @return string[]
    */
-  function getParentClassName();
+  function getExtendsAliases();
 
   /**
    * @return string[]
-   *   Alias names of implemented or extended interfaces.
    */
-  function getInterfaceNames();
+  function getImplementsAliases();
 
   /**
    * @return \Donquixote\HastyPhpAst\Ast\ClassLikeBody\AstClassLikeBodyInterface
